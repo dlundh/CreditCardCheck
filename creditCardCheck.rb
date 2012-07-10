@@ -1,13 +1,12 @@
 class CreditCardCheck
-  def get_type(number)
-    n = number.to_s
-    if (n[0..3] == "6011")    
+  def get_type(number)    
+    if (number =~ /^6011/)
       return "Discover"
-    elsif (n[0..1] == "34" || n[0..1] == "37")
+    elsif (number =~ /^(34|37)/)
       return "AMEX"
-    elsif (n[0..1].to_i >= 51 && n[0..1].to_i <= 55)
+    elsif (number =~ /^5[1-5]/)
       return "MasterCard"
-    elsif (n[0] == "4")
+    elsif (number =~ /^4/)
       return "VISA"
     else
       return "Unknown"
