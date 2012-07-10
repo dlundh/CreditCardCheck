@@ -1,12 +1,13 @@
 class CreditCardCheck
-  def get_type(number)    
-    if (number =~ /^6011/)
+  def get_type(number)
+    length = number.gsub(/\s+/, "").size
+    if (length == 16 && number =~ /^6011/)
       return "Discover"
-    elsif (number =~ /^(34|37)/)
+    elsif (length == 15 && number =~ /^(34|37)/)
       return "AMEX"
-    elsif (number =~ /^5[1-5]/)
+    elsif (length == 16 && number =~ /^5[1-5]/)
       return "MasterCard"
-    elsif (number =~ /^4/)
+    elsif (length == 16 && number =~ /^4/)
       return "VISA"
     else
       return "Unknown"
