@@ -1,3 +1,4 @@
 require_relative "creditCardCheck"
 
-CreditCardCheck.new.input()
+ccheck = CreditCardCheck.new
+ccheck.display_results(ccheck.input())
