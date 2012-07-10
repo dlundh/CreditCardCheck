@@ -40,12 +40,12 @@ class CreditCardCheck
   def input
     $/ = "END"  
     puts "Enter credit card numbers, one per line. End by typing END:"
-    @cc_numbers = gets
-    self.display_results()
+    cc_numbers = gets
+    return cc_numbers
   end
   
-  def display_results
-    cc_array = @cc_numbers.chomp("\nEND").split(/\n/)
+  def display_results(cc_numbers)
+    cc_array = cc_numbers.chomp("\nEND").split(/\n/)
     cc_array.each do |cc_number|        
         card = "#{self.get_type(cc_number)}: #{cc_number.gsub(/\s+/, "")}"
         validation = self.validate(cc_number) 
